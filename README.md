@@ -45,6 +45,7 @@ address:
         zip: zip
         country: country_code
         state: state_code
+        id: place_id
         name: place_name
         address: place_address
         formataddress: fmt_address
@@ -64,6 +65,8 @@ latitude:
     label: Latitude
 longitude:
     label: Longitude
+place_id:
+    label: Unique Place Id
 place_name:
     label: Place Name
 place_address:
@@ -83,6 +86,7 @@ Available mappings:
 * country-long
 * latitude
 * longitude
+* [id](https://developers.google.com/places/place-id)
 * name
 * address
 * formataddress

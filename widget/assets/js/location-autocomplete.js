@@ -11,6 +11,7 @@
  * - data-input-country-long="#locationCountry" - input to populate with country (long name)
  * - data-input-latitude="#locationLatitude" - input to populate with latitude
  * - data-input-longitude="#locationLongitude" - input to populate with longitude
+ * - data-input-placeid="#locationPlaceId" - input to populate with google maps unique place id
  * - data-input-placename="#locationPlaceName" - input to populate with building name
  * - data-input-placeaddress="#locationPlaceAddress" - input to populate with building address
  * - data-input-formataddress="#locationFormatAddress" - input to populate with formatted building address
@@ -32,6 +33,7 @@
         data-input-state="#locationState"
         data-input-zip="#locationZip"
         data-input-country="#locationCountry"
+        data-input-id="#locationId"
         data-input-name="#locationName"
         data-input-address="#locationAddress"
         data-input-formataddress="#locationFormatAddress"
@@ -42,6 +44,7 @@
     <input type="text" name="state" value="" id="locationState" />
     <input type="text" name="zip" value="" id="locationZip" />
     <input type="text" name="country" value="" id="locationCountry" />
+    <input type="text" name="id" value="" id="locationId" />
     <input type="text" name="name" value="" id="locationName" />
     <input type="text" name="addr" value="" id="locationAddress" />
     <input type="text" name="fmtaddr" value="" id="locationFormatAddress" />
@@ -71,6 +74,7 @@
         inputState: null,
         inputCountry: null,
         inputCountryLong: null,
+        inputId: null,
         inputName: null,
         inputAddress: null,
         inputFormatAddress: null
@@ -106,6 +110,7 @@
                 inputCountryLong: 'country'
             },
             'place': {
+              inputId: 'id',
               inputName: 'name',
               inputAddress: 'addr',
               inputFormataddress: 'fmtaddr'
@@ -171,7 +176,8 @@
           var $targetEl = elementFinderFunction(standard)
           if (!$targetEl) return
 
-          if (google == 'name') $targetEl.val(place.name)
+          if (google == 'id') $targetEl.val(place.place_id)
+          else if (google == 'name') $targetEl.val(place.name)
           else if (google == 'addr') $targetEl.val(place.formatted_address)
           else if (google == 'fmtaddr') $targetEl.val(place.formatted_address.replace(/ /g,"+"))
         })
